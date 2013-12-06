@@ -42,12 +42,12 @@ class Intercom
     /**
      * The Intercom application ID
      */
-    private $appId;
+    private $appId = null;
 
     /**
      * The Intercom API key
      */
-    private $apiKey;
+    private $apiKey = null;
 
     /**
      * Last HTTP error obtained from curl_errno() and curl_error()
