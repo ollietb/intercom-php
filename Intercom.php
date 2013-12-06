@@ -42,12 +42,12 @@ class Intercom
     /**
      * The Intercom application ID
      */
-    private $appId = null;
+    private $appId;
 
     /**
      * The Intercom API key
      */
-    private $apiKey = null;
+    private $apiKey;
 
     /**
      * Last HTTP error obtained from curl_errno() and curl_error()
@@ -189,6 +189,7 @@ class Intercom
      * @param  string $id                The ID of the user to be created
      * @param  string $email             The user's email address (optional)
      * @param  string $name              The user's name (optional)
+     * @param  string $unsubscribed      The user's email unsubscribe preference. true or false. (optional)
      * @param  array  $customData        Any custom data to be aggregate to the user's record (optional)
      * @param  long   $createdAt         UNIX timestamp describing the date and time when the user was created (optional)
      * @param  string $lastSeenIp        The last IP address where the user was last seen (optional)
@@ -200,6 +201,7 @@ class Intercom
     public function createUser($id,
                                $email = null,
                                $name = null,
+							   $unsubscribed = null,							   
                                $customData = array(),
                                $createdAt = null,
                                $lastSeenIp = null,
@@ -217,6 +219,10 @@ class Intercom
 
         if (!empty($name)) {
             $data['name'] = $name;
+        }
+
+        if (!empty($unsubscribed)) {
+            $data['unsubscribed_from_emails'] = $unsubscribed;
         }
 
         if (!empty($createdAt)) {
@@ -238,7 +244,7 @@ class Intercom
         if (!empty($customData)) {
             $data['custom_data'] = $customData;
         }
-
+		
         $path = 'users';
         return $this->httpCall($this->apiEndpoint . $path, $method, json_encode($data));
     }
@@ -249,6 +255,7 @@ class Intercom
      * @param  string $id                The ID of the user to be updated
      * @param  string $email             The user's email address (optional)
      * @param  string $name              The user's name (optional)
+     * @param  string $unsubscribed      The user's email unsubscribe preference. true or false. (optional)
      * @param  array  $customData        Any custom data to be aggregate to the user's record (optional)
      * @param  long   $createdAt         UNIX timestamp describing the date and time when the user was created (optional)
      * @param  string $lastSeenIp        The last IP address where the user was last seen (optional)
@@ -259,13 +266,14 @@ class Intercom
     public function updateUser($id,
                                $email = null,
                                $name = null,
+							   $unsubscribed = null,
                                $customData = array(),
                                $createdAt = null,
                                $lastSeenIp = null,
                                $lastSeenUserAgent = null,
                                $lastRequestAt = null)
     {
-        return $this->createUser($id, $email, $name, $customData, $createdAt, $lastSeenIp, $lastSeenUserAgent, $lastRequestAt, 'PUT');
+        return $this->createUser($id, $email, $name, $unsubscribed, $customData, $createdAt, $lastSeenIp, $lastSeenUserAgent, $lastRequestAt, 'PUT');
     }
 
     /**
