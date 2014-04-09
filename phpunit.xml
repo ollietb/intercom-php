@@ -1,0 +1,36 @@
+<phpunit backupGlobals="true"
+         backupStaticAttributes="false"
+         cacheTokens="false"
+         colors="false"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         forceCoversAnnotation="false"
+         mapTestClassNameToCoveredClassName="false"
+         printerClass="PHPUnit_TextUI_ResultPrinter"
+         processIsolation="false"
+         stopOnError="false"
+         stopOnFailure="false"
+         stopOnIncomplete="false"
+         stopOnSkipped="false"
+         testSuiteLoaderClass="PHPUnit_Runner_StandardTestSuiteLoader"
+         strict="false"
+         verbose="false"
+         bootstrap="Intercom.php">
+
+    <testsuites>
+      <testsuite name="IntercomTest">
+        <file>tests/IntercomTest.php</file>
+      </testsuite>
+    </testsuites>
+
+    <php>
+      <!-- set to true to run tests against real API  -->
+      <var name="integrationTests" value="false"/>
+
+      <!-- available on the API keys page, accessible -->
+      <!-- through the “API Keys” menu item           -->
+      <var name="appId" value="YOUR_APP_ID"/>
+      <var name="apiKey" value="YOUR_API_KEY"/>
+    </php>
+</phpunit>
