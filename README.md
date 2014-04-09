@@ -1,12 +1,13 @@
 Intercom is a customer relationship management and messaging tool for web app owners
 
-This library provides connectivity with the Intercom API (https://api.intercom.io)
+This library provides connectivity with the Intercom API (http://doc.intercom.io/api/v1/)
 
 [![Build Status](https://travis-ci.org/nubera-ebusiness/intercom-php.png?branch=master)](https://travis-ci.org/nubera-ebusiness/intercom-php)
+[![Total Downloads](https://poser.pugx.org/nubera-ebusiness/intercom-php/downloads.png)](https://packagist.org/packages/nubera-ebusiness/intercom-php)
 
 ## License
 
-Copyright 2013 Nubera eBusiness S.L. All rights reserved.
+Copyright 2013-2014 Nubera eBusiness S.L. All rights reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to
@@ -32,7 +33,7 @@ IN THE SOFTWARE.
 
 ```php
 <?php
-$intercom = new Intercom('dummy-app-id', 'dummy-api-key');
+$intercom = new Intercom('YOUR_APP_ID', 'YOUR_API_KEY');
 ?>
 ```
 
@@ -40,7 +41,7 @@ $intercom = new Intercom('dummy-app-id', 'dummy-api-key');
 
 ```php
 <?php
-$intercom = new Intercom('dummy-app-id', 'dummy-api-key');
+$intercom = new Intercom('YOUR_APP_ID', 'YOUR_API_KEY');
 
 $users = $intercom->getAllUsers();
 var_dump($users);
@@ -51,7 +52,7 @@ var_dump($users);
 
 ```php
 <?php
-$intercom = new Intercom('dummy-app-id', 'dummy-api-key');
+$intercom = new Intercom('YOUR_APP_ID', 'YOUR_API_KEY');
 
 $res = $intercom->createUser('userId001', 'email@example.com');
 ?>
@@ -61,7 +62,7 @@ $res = $intercom->createUser('userId001', 'email@example.com');
 
 ```php
 <?php
-$intercom = new Intercom('dummy-app-id', 'dummy-api-key');
+$intercom = new Intercom('YOUR_APP_ID', 'YOUR_API_KEY');
 
 $res = $intercom->createImpression('userId001');
 ?>
