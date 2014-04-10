@@ -1,6 +1,6 @@
 {
     "name": "nubera-ebusiness/intercom-php",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "type": "library",
     "description": "Connectivity with the Intercom API",
     "keywords": ["intercom","api"],
