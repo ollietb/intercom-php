@@ -212,7 +212,6 @@ class Intercom
         return $this->httpCall($this->apiEndpoint . $path, 'POST', json_encode($data));
     }
 
-
     /**
      * Create a user on your Intercom account.
      *
@@ -231,7 +230,6 @@ class Intercom
     public function createUser($id,
                                $email = null,
                                $name = null,
-							   $unsubscribed = null,							   
                                $customData = array(),
                                $createdAt = null,
                                $lastSeenIp = null,
@@ -250,10 +248,6 @@ class Intercom
 
         if (!empty($name)) {
             $data['name'] = $name;
-        }
-
-        if (!empty($unsubscribed)) {
-            $data['unsubscribed_from_emails'] = $unsubscribed;
         }
 
         if (!empty($createdAt)) {
@@ -301,7 +295,6 @@ class Intercom
     public function updateUser($id,
                                $email = null,
                                $name = null,
-							   $unsubscribed = null,
                                $customData = array(),
                                $createdAt = null,
                                $lastSeenIp = null,
