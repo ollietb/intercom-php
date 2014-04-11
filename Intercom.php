@@ -184,6 +184,35 @@ class Intercom
     }
 
     /**
+     * Create an new message thread associated with a user on your Intercom account
+     * 
+     * @param  string $userId     The ID of the user
+     * @param  string $email      The email of the user (optional)
+     * @param  string $body       The body of the message
+     * @param  string $currentUrl The URL the user is visiting (optional)
+     * @return object
+     **/
+    public function createThread($userId, $email = null, $body = null, $currentUrl = null)
+    {
+        $data = array();
+
+        $data['user_id'] = $userId;
+
+        if (!empty($email)) {
+            $data['email'] = $email;
+        }
+      
+        $data['body'] = $body;
+
+        if (!empty($currentUrl)) {
+            $data['current_url'] = $currentUrl;
+        }
+        $path = 'users/message_threads';
+
+        return $this->httpCall($this->apiEndpoint . $path, 'POST', json_encode($data));
+    }
+
+    /**
      * Create a user on your Intercom account.
      *
      * @param  string $id                     The ID of the user to be created
