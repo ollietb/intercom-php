@@ -447,5 +447,24 @@ class Intercom
         return $this->createTag($name, $emails, $userIds, $color, $action, 'PUT');
 
     }
+
+
+    public function createEvent($event_name, $user_email_or_id, $createdAt, $meta_data = []) {
+        $path = "events";
+
+        $data = ["event_name" => $event_name];
+
+
+        if(is_numeric($user_email_or_id)) {
+          $data["user_id"] = $user_email_or_id;
+        } else {
+          $data["email"] = $user_email_or_id;
+        }
+
+        $data["created"] = $createdAt;
+        $data["metadata"] = $meta_data;
+
+        return $this->httpCall($this->apiEndpoint . $path, 'POST', json_encode($data));
+    }
 }
-?>
+
