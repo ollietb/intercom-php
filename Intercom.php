@@ -449,16 +449,33 @@ class Intercom
     }
 
 
-    public function createEvent($event_name, $user_email_or_id, $createdAt, $meta_data = []) {
+    /**
+     * @param $event_name         The name of the event (required)
+     * @param $user_email_or_id   Email or user id (required)
+     * @param array $meta_data    Array of data to store with the event (optional)
+     * @param string $createdAt   Timestamp or string (optional, defaults to now)
+     * @return object
+     */
+    public function createEvent($event_name,
+                                $user_email_or_id,
+                                $meta_data = [],
+                                $createdAt = 'now')
+    {
         $path = "events";
 
         $data = ["event_name" => $event_name];
 
+        if(!is_numeric($createdAt)) {
+            $createdAt = strtotime($createdAt);
+            if(!$createdAt) {
+                $createdAt = time();
+            }
+        }
 
-        if(is_numeric($user_email_or_id)) {
-          $data["user_id"] = $user_email_or_id;
+        if($this->isEmail($user_email_or_id)) {
+            $data["email"] = $user_email_or_id;
         } else {
-          $data["email"] = $user_email_or_id;
+            $data["user_id"] = $user_email_or_id;
         }
 
         $data["created"] = $createdAt;
