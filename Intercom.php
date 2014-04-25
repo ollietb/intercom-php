@@ -360,6 +360,49 @@ class Intercom
     }
 
     /**
+     * Create an event associated with a user on your Intercom account
+     * 
+     * @param  string $userId     The ID of the user
+     * @param  string $eventName  Tge name of the event
+     * #param  array  $metadata   The metadata associated with the event (optional) 
+     * @param  string $email      The email of the user (optional)
+     * @param  string $created    The time at which the event occurred (optional)
+     * @return object
+     **/
+    public function createEvent($userId, $eventName, $metadata = null, $email = null, $created = null)
+    {
+        $data = array();
+
+        $data['user_id'] = $userId;
+
+        if (!empty($eventName)) {
+            $data['event_name'] = $eventName;
+        }
+
+        if (!empty($email)) {
+            $data['email'] = $email;
+        }
+
+        if (!empty($metadata)) {
+            $data['metadata'] = $metadata;
+        }
+
+        if (!empty($created)) {
+            $data['created'] = $created;
+        } else {
+            $data['created'] = time();
+        }
+
+        $path = 'events/';
+
+        return $this->httpCall(
+            str_replace('/v1', '', $this->apiEndpoint) . $path,
+            'POST',
+            json_encode($data)
+        );
+    }
+
+    /**
      * Get the last error from curl.
      * 
      * @return array Array with 'code' and 'message' indexes
