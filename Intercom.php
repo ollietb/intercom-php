@@ -481,7 +481,7 @@ class Intercom
         $data["created"] = $createdAt;
         $data["metadata"] = $meta_data;
 
-        return $this->httpCall($this->apiEndpoint . $path, 'POST', json_encode($data));
+        return $this->httpCall(str_replace('v1/', '', $this->apiEndpoint) . $path, 'POST', json_encode($data));
     }
 }
 
