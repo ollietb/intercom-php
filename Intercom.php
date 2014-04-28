@@ -124,7 +124,10 @@ class Intercom
         $response = curl_exec($ch);
 
         // Set HTTP error, if any
-        $this->lastError = array('code' => curl_errno($ch), 'message' => curl_error($ch));
+        $this->lastError = array('code' => curl_errno($ch),
+                                 'message' => curl_error($ch),
+                                 'httpCode' => curl_getinfo($ch, CURLINFO_HTTP_CODE));
+
 
         return json_decode($response);
     }
