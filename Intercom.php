@@ -365,7 +365,7 @@ class Intercom
     /**
      * Get the last error from curl.
      * 
-     * @return array Array with 'code' and 'message' indexes
+     * @return array Array with 'code', 'message' and 'httpCode' indexes
      */
     public function getLastError()
     {
@@ -396,6 +396,7 @@ class Intercom
      * @param  string $color        The color of the tag (must be "green", "red", "teal", "gold", "blue", or "purple").
      * @param  string $action       required (if emails or userIds are not empty) — either "tag" or "untag"
      * @param  string $method       HTTP method, to be used by updateTag()
+     * @return object
      **/
     public function createTag($name,
                                $emails = null,
@@ -440,6 +441,7 @@ class Intercom
      * @param  array  $userIds      Array of user ids to tag (optional)
      * @param  string $color        The color of the tag (must be "green", "red", "teal", "gold", "blue", or "purple").
      * @param  string $action       required (if emails or userIds are not empty) — either "tag" or "untag"
+     * @return object
      **/
     public function updateTag($name,
                                $emails = null,
