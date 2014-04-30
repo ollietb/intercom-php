@@ -19,5 +19,8 @@
     },
     "autoload": {
         "classmap": ["Intercom.php"]
-    }    
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    }
 }
