@@ -2,28 +2,28 @@
 /**
  * Intercom is a customer relationship management and messaging tool for web app owners
  * 
- * This library provides connectivity with the Intercom API (https://api.intercom.io)
+ * This library provides connectivity with the Intercom API (http://doc.intercom.io/api/)
  * 
  * Basic usage:
  * 
  * 1. Configure Intercom with your access credentials
  * <code>
  * <?php
- * $intercom = new Intercom('dummy-app-id', 'dummy-api-key');
+ * $intercom = new Intercom('YOUR_APP_ID', 'YOUR_API_KEY');
  * ?>
  * </code>
  * 
  * 2. Make requests to the API
  * <code>
  * <?php
- * $intercom = new Intercom('dummy-app-id', 'dummy-api-key');
+ * $intercom = new Intercom('YOUR_APP_ID', 'YOUR_API_KEY');
  * $users = $intercom->getAllUsers();
  * var_dump($users);
  * ?>
  * </code>
  * 
- * @author    Bruno Pedro <bruno.pedro@cloudwork.com>
- * @copyright Copyright 2013 Nubera eBusiness S.L. All rights reserved.
+ * @author    Bruno Pedro <bruno.pedro@getapp.com>
+ * @copyright Copyright 2013-2014 Nubera eBusiness S.L. All rights reserved.
  * @link      http://www.nubera.com/
  * @license   http://opensource.org/licenses/MIT
  **/
