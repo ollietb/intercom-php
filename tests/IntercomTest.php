@@ -111,4 +111,21 @@ class IntercomTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(is_object($res), $lastError['code'] . ': ' . $lastError['message']);
         $this->assertObjectHasAttribute('unread_messages', $res);
     }
+
+    /**
+     * @depends testCreateUser
+     */
+    public function testCreateEvent()
+    {
+      $userId = 'userId001';
+      $email = 'email@example.com';
+      $eventName = 'test_event';
+      $metadata = array('test_meta' => 'test_value');
+
+      $res = $this->service->createEvent($userId, $eventName, $metadata, $email);
+      $lastError = $this->service->getLastError();
+
+      $this->assertEmpty($res);
+      $this->assertEquals(202, $lastError['httpCode']);
+    }
 }
